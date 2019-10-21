@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://ulquiola.github.io">
   <title>Python的特殊方法 | ulquiola的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.初始化对象—init() 2.函数repr(obj)的返回值—repr(): 3.函数str(obj)的返回值—str(): 4.调用obj()的返回值—call(): 5.对象的迭代器—iter(): 6.对象的加法运算—add()： 7.对象的减法运算—sub(): 8.对象的左乘运算(obj*x)—mul(): 9.对象的右乘运算(x*obj)—rmul(): 10.对象的类型—clas">
+  <meta name="description" content="1.初始化对象 1__init__()  2.函数repr(obj)的返回值 1__repr__():  3.函数str(obj)的返回值 1__str__(): 4.调用obj()的返回值 1__call__():  5.对象的迭代器 1__iter__():  6.对象的加法运算 1__add__()：  7.对象的减法运算 1__sub__():  8.对象的左乘运算(obj*x) 1__m">
 <meta name="keywords" content="Python 基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python的特殊方法">
 <meta property="og:url" content="http:&#x2F;&#x2F;ulquiola.github.io&#x2F;2019&#x2F;09&#x2F;23&#x2F;Python%E7%9A%84%E7%89%B9%E6%AE%8A%E6%96%B9%E6%B3%95&#x2F;index.html">
 <meta property="og:site_name" content="ulquiola的博客">
-<meta property="og:description" content="1.初始化对象—init() 2.函数repr(obj)的返回值—repr(): 3.函数str(obj)的返回值—str(): 4.调用obj()的返回值—call(): 5.对象的迭代器—iter(): 6.对象的加法运算—add()： 7.对象的减法运算—sub(): 8.对象的左乘运算(obj*x)—mul(): 9.对象的右乘运算(x*obj)—rmul(): 10.对象的类型—clas">
+<meta property="og:description" content="1.初始化对象 1__init__()  2.函数repr(obj)的返回值 1__repr__():  3.函数str(obj)的返回值 1__str__(): 4.调用obj()的返回值 1__call__():  5.对象的迭代器 1__iter__():  6.对象的加法运算 1__add__()：  7.对象的减法运算 1__sub__():  8.对象的左乘运算(obj*x) 1__m">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2019-10-20T11:08:53.323Z">
+<meta property="og:updated_time" content="2019-10-21T01:51:22.802Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="ulquiola的博客" type="application/atom+xml">
@@ -173,18 +173,37 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.初始化对象—<strong>init</strong>()</p>
-<p>2.函数repr(obj)的返回值—<strong>repr</strong>():</p>
-<p>3.函数str(obj)的返回值—<strong>str</strong>():</p>
-<p>4.调用obj()的返回值—<strong>call</strong>():</p>
-<p>5.对象的迭代器—<strong>iter</strong>():</p>
-<p>6.对象的加法运算—<strong>add</strong>()：</p>
-<p>7.对象的减法运算—<strong>sub</strong>():</p>
-<p>8.对象的左乘运算(obj*x)—<strong>mul</strong>():</p>
-<p>9.对象的右乘运算(x*obj)—<strong>rmul</strong>():</p>
-<p>10.对象的类型—<strong>class</strong>():</p>
-<p>11.对象的名字字符串—<strong>name</strong>():</p>
+        <p>1.初始化对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__init__()</span><br></pre></td></tr></table></figure>
 
+<p>2.函数repr(obj)的返回值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__repr__():</span><br></pre></td></tr></table></figure>
+
+<p>3.函数str(obj)的返回值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__str__():</span><br></pre></td></tr></table></figure>
+<p>4.调用obj()的返回值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__call__():</span><br></pre></td></tr></table></figure>
+
+<p>5.对象的迭代器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__iter__():</span><br></pre></td></tr></table></figure>
+
+<p>6.对象的加法运算</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__add__()：</span><br></pre></td></tr></table></figure>
+
+<p>7.对象的减法运算</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__sub__():</span><br></pre></td></tr></table></figure>
+
+<p>8.对象的左乘运算(obj*x)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__mul__():</span><br></pre></td></tr></table></figure>
+
+<p>9.对象的右乘运算(x*obj)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__rmul__():</span><br></pre></td></tr></table></figure>
+
+<p>10.对象的类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__class__():</span><br></pre></td></tr></table></figure>
+
+<p>11.对象的名字字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__name__():</span><br></pre></td></tr></table></figure>
       
 
       
