@@ -154,27 +154,68 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-递归" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Numpy基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/17/%E9%80%92%E5%BD%92/">递归</a>
+      <a class="article-title" href="/2019/10/25/Numpy%E5%9F%BA%E7%A1%80/">Numpy基础</a>
     </h1>
   
 
         
-        <a href="/2019/10/17/%E9%80%92%E5%BD%92/" class="archive-article-date">
-  	<time datetime="2019-10-17T00:31:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-17</time>
+        <a href="/2019/10/25/Numpy%E5%9F%BA%E7%A1%80/" class="archive-article-date">
+  	<time datetime="2019-10-25T00:47:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1>
+        <h1 id="1-创建数组"><a href="#1-创建数组" class="headerlink" title="1.创建数组"></a>1.创建数组</h1><ul>
+<li>创建一维数组</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">a = np.array([0, 1, 2, 3, 4])</span><br><span class="line">b = np.array((0, 1, 2, 3, 4))</span><br><span class="line">c = np.arange(5)</span><br><span class="line">d = np.linspace(0, 2*np.pi, 5)</span><br><span class="line"></span><br><span class="line">print(a) # &gt;&gt;&gt;[0 1 2 3 4]</span><br><span class="line">print(b) # &gt;&gt;&gt;[0 1 2 3 4]</span><br><span class="line">print(c) # &gt;&gt;&gt;[0 1 2 3 4]</span><br><span class="line">print(d) # &gt;&gt;&gt;[ 0.          1.57079633  3.14159265  4.71238898  6.28318531]</span><br><span class="line">print(a[3]) # &gt;&gt;&gt;3</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>上面的代码显示了创建数组的4种不同方法。最基本的方法是将序列传递给NumPy的array()函数; 你可以传递任何序列（类数组），而不仅仅是常见的列表（list）数据类型。</p>
+</li>
+<li><p>创建多维数组</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a = np.array([[11, 12, 13, 14, 15],</span><br><span class="line">              [16, 17, 18, 19, 20],</span><br><span class="line">              [21, 22, 23, 24, 25],</span><br><span class="line">              [26, 27, 28 ,29, 30],</span><br><span class="line">              [31, 32, 33, 34, 35]])</span><br><span class="line"> </span><br><span class="line">print(a[2,4]) # &gt;&gt;&gt;25</span><br></pre></td></tr></table></figure>
+
+<h2 id="介绍一下矢量和矩阵"><a href="#介绍一下矢量和矩阵" class="headerlink" title="介绍一下矢量和矩阵"></a>介绍一下矢量和矩阵</h2><ul>
+<li><p>矢量是具有方向和幅度的量。它们通常用于表示速度，加速度和动量等事物。向量可以用多种方式编写，尽管对我们最有用的是它们被写为n元组的形式，如（1,4,6,9）。这就是我们在NumPy中表示他们的方式。</p>
+</li>
+<li><p>矩阵类似于矢量，除了它由行和列组成; 很像一个网格。可以通过给出它所在的行和列来引用矩阵中的值。在NumPy中，我们通过传递一系列序列来制作数组，就像我们之前所做的那样。</p>
+</li>
+</ul>
+<h2 id="多维数组的切片"><a href="#多维数组的切片" class="headerlink" title="多维数组的切片"></a>多维数组的切片</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[起始:结束,起始:结束]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>[行，列]</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">print(a[0, 1:4]) # &gt;&gt;&gt;[12 13 14]</span><br><span class="line">print(a[1:4, 0]) # &gt;&gt;&gt;[16 21 26]</span><br><span class="line">print(a[::2,::2]) # &gt;&gt;&gt;[[11 13 15]</span><br><span class="line">                  #     [21 23 25]</span><br><span class="line">                  #     [31 33 35]]</span><br><span class="line">print(a[:, 1]) # &gt;&gt;&gt;[12 17 22 27 32]</span><br></pre></td></tr></table></figure>
+
+<p>如图所示：<br><img src="Numpy%E5%9F%BA%E7%A1%80/numpy_2D_slice.jpg" alt="二维数组切片"></p>
+<h2 id="数组属性"><a href="#数组属性" class="headerlink" title="数组属性"></a>数组属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># Array properties</span><br><span class="line">a = np.array([[11, 12, 13, 14, 15],</span><br><span class="line">              [16, 17, 18, 19, 20],</span><br><span class="line">              [21, 22, 23, 24, 25],</span><br><span class="line">              [26, 27, 28 ,29, 30],</span><br><span class="line">              [31, 32, 33, 34, 35]])</span><br><span class="line"></span><br><span class="line">print(type(a)) # &gt;&gt;&gt;&lt;class &apos;numpy.ndarray&apos;&gt;</span><br><span class="line">print(a.dtype) # &gt;&gt;&gt;int64</span><br><span class="line">print(a.size) # &gt;&gt;&gt;25</span><br><span class="line">print(a.shape) # &gt;&gt;&gt;(5, 5)</span><br><span class="line">print(a.itemsize) # &gt;&gt;&gt;8</span><br><span class="line">print(a.ndim) # &gt;&gt;&gt;2</span><br><span class="line">print(a.nbytes) # &gt;&gt;&gt;200</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>正如你在上面的代码中看到的，NumPy数组实际上被称为ndarray。我不知道为什么他妈的它叫ndarray，如果有人知道请留言！我猜它代表n维数组。</p>
+</li>
+<li><p>数组的形状是它有多少行和列，上面的数组有5行和5列，所以它的形状是(5，5)。</p>
+</li>
+<li><p>itemsize属性是每个项占用的字节数。这个数组的数据类型是int 64，一个int 64中有64位，一个字节中有8位，除以64除以8，你就可以得到它占用了多少字节，在本例中是8。</p>
+</li>
+<li><p>ndim 属性是数组的维数。这个有2个。例如，向量只有1。</p>
+</li>
+<li><p>nbytes 属性是数组中的所有数据消耗掉的字节数。你应该注意到，这并不计算数组的开销，因此数组占用的实际空间将稍微大一点。</p>
+</li>
+</ul>
+
       
 
       
@@ -187,7 +228,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Numpy</a>
         		</li>
       		
 		</ul>
@@ -197,7 +238,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/17/%E9%80%92%E5%BD%92/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/10/25/Numpy%E5%9F%BA%E7%A1%80/">展开全文 >></a>
         </p>
       
 
@@ -1426,7 +1467,7 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Git 操作</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1434,15 +1475,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color1">Numpy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">Git 操作</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 基础</a>
               </li>
              
               <li class="article-tag-list-item">

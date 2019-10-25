@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://ulquiola.github.io">
-  <title>sql-practic | ulquiola的博客</title>
+  <title>Numpy基础 | ulquiola的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.查询所有员工的姓氏    点击展开...    select LastName  from employees   2.查询所有员工的姓氏，不重复。    点击展开...    select distinct lastName  from employees   3.查询姓氏为“Smith”的员工的所有数据。    点击展开...    select *  from employees  wh">
-<meta name="keywords" content="Sql">
+  <meta name="description" content="1.创建数组 创建一维数组  12345678910a = np.array([0, 1, 2, 3, 4])b = np.array((0, 1, 2, 3, 4))c = np.arange(5)d = np.linspace(0, 2*np.pi, 5)print(a) # &amp;gt;&amp;gt;&amp;gt;[0 1 2 3 4]print(b) # &amp;gt;&amp;gt;&amp;gt;[0 1 2 3 4]pr">
+<meta name="keywords" content="Numpy">
 <meta property="og:type" content="article">
-<meta property="og:title" content="sql-practic">
-<meta property="og:url" content="http:&#x2F;&#x2F;ulquiola.github.io&#x2F;2019&#x2F;08&#x2F;15&#x2F;sql-practic&#x2F;index.html">
+<meta property="og:title" content="Numpy基础">
+<meta property="og:url" content="http:&#x2F;&#x2F;ulquiola.github.io&#x2F;2019&#x2F;10&#x2F;25&#x2F;Numpy%E5%9F%BA%E7%A1%80&#x2F;index.html">
 <meta property="og:site_name" content="ulquiola的博客">
-<meta property="og:description" content="1.查询所有员工的姓氏    点击展开...    select LastName  from employees   2.查询所有员工的姓氏，不重复。    点击展开...    select distinct lastName  from employees   3.查询姓氏为“Smith”的员工的所有数据。    点击展开...    select *  from employees  wh">
+<meta property="og:description" content="1.创建数组 创建一维数组  12345678910a = np.array([0, 1, 2, 3, 4])b = np.array((0, 1, 2, 3, 4))c = np.arange(5)d = np.linspace(0, 2*np.pi, 5)print(a) # &amp;gt;&amp;gt;&amp;gt;[0 1 2 3 4]print(b) # &amp;gt;&amp;gt;&amp;gt;[0 1 2 3 4]pr">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2019-10-20T11:09:18.329Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;ulquiola.github.io&#x2F;2019&#x2F;10&#x2F;25&#x2F;Numpy%E5%9F%BA%E7%A1%80&#x2F;Numpy%E5%9F%BA%E7%A1%80&#x2F;numpy_2D_slice.jpg">
+<meta property="og:updated_time" content="2019-10-25T02:57:54.670Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;ulquiola.github.io&#x2F;2019&#x2F;10&#x2F;25&#x2F;Numpy%E5%9F%BA%E7%A1%80&#x2F;Numpy%E5%9F%BA%E7%A1%80&#x2F;numpy_2D_slice.jpg">
   
     <link rel="alternative" href="/atom.xml" title="ulquiola的博客" type="application/atom+xml">
   
@@ -153,177 +155,67 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-sql-practic" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Numpy基础" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      sql-practic
+      Numpy基础
     </h1>
   
 
         
-        <a href="/2019/08/15/sql-practic/" class="archive-article-date">
-  	<time datetime="2019-08-15T04:34:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-15</time>
+        <a href="/2019/10/25/Numpy%E5%9F%BA%E7%A1%80/" class="archive-article-date">
+  	<time datetime="2019-10-25T00:47:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.查询所有员工的姓氏</p>
-<details>
-  <summary>点击展开...</summary>
+        <h1 id="1-创建数组"><a href="#1-创建数组" class="headerlink" title="1.创建数组"></a>1.创建数组</h1><ul>
+<li>创建一维数组</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">a = np.array([0, 1, 2, 3, 4])</span><br><span class="line">b = np.array((0, 1, 2, 3, 4))</span><br><span class="line">c = np.arange(5)</span><br><span class="line">d = np.linspace(0, 2*np.pi, 5)</span><br><span class="line"></span><br><span class="line">print(a) # &gt;&gt;&gt;[0 1 2 3 4]</span><br><span class="line">print(b) # &gt;&gt;&gt;[0 1 2 3 4]</span><br><span class="line">print(c) # &gt;&gt;&gt;[0 1 2 3 4]</span><br><span class="line">print(d) # &gt;&gt;&gt;[ 0.          1.57079633  3.14159265  4.71238898  6.28318531]</span><br><span class="line">print(a[3]) # &gt;&gt;&gt;3</span><br></pre></td></tr></table></figure>
 
-<p>  select LastName<br>  from employees</p>
-</details>
+<ul>
+<li><p>上面的代码显示了创建数组的4种不同方法。最基本的方法是将序列传递给NumPy的array()函数; 你可以传递任何序列（类数组），而不仅仅是常见的列表（list）数据类型。</p>
+</li>
+<li><p>创建多维数组</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a = np.array([[11, 12, 13, 14, 15],</span><br><span class="line">              [16, 17, 18, 19, 20],</span><br><span class="line">              [21, 22, 23, 24, 25],</span><br><span class="line">              [26, 27, 28 ,29, 30],</span><br><span class="line">              [31, 32, 33, 34, 35]])</span><br><span class="line"> </span><br><span class="line">print(a[2,4]) # &gt;&gt;&gt;25</span><br></pre></td></tr></table></figure>
 
-<p>2.查询所有员工的姓氏，不重复。</p>
-<details>
-  <summary>点击展开...</summary>
+<h2 id="介绍一下矢量和矩阵"><a href="#介绍一下矢量和矩阵" class="headerlink" title="介绍一下矢量和矩阵"></a>介绍一下矢量和矩阵</h2><ul>
+<li><p>矢量是具有方向和幅度的量。它们通常用于表示速度，加速度和动量等事物。向量可以用多种方式编写，尽管对我们最有用的是它们被写为n元组的形式，如（1,4,6,9）。这就是我们在NumPy中表示他们的方式。</p>
+</li>
+<li><p>矩阵类似于矢量，除了它由行和列组成; 很像一个网格。可以通过给出它所在的行和列来引用矩阵中的值。在NumPy中，我们通过传递一系列序列来制作数组，就像我们之前所做的那样。</p>
+</li>
+</ul>
+<h2 id="多维数组的切片"><a href="#多维数组的切片" class="headerlink" title="多维数组的切片"></a>多维数组的切片</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[起始:结束,起始:结束]</span><br></pre></td></tr></table></figure>
 
-<p>  select distinct lastName<br>  from employees</p>
-</details>
+<ul>
+<li>[行，列]</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">print(a[0, 1:4]) # &gt;&gt;&gt;[12 13 14]</span><br><span class="line">print(a[1:4, 0]) # &gt;&gt;&gt;[16 21 26]</span><br><span class="line">print(a[::2,::2]) # &gt;&gt;&gt;[[11 13 15]</span><br><span class="line">                  #     [21 23 25]</span><br><span class="line">                  #     [31 33 35]]</span><br><span class="line">print(a[:, 1]) # &gt;&gt;&gt;[12 17 22 27 32]</span><br></pre></td></tr></table></figure>
 
-<p>3.查询姓氏为“Smith”的员工的所有数据。</p>
-<details>
-  <summary>点击展开...</summary>
+<p>如图所示：<br><img src="Numpy%E5%9F%BA%E7%A1%80/numpy_2D_slice.jpg" alt="二维数组切片"></p>
+<h2 id="数组属性"><a href="#数组属性" class="headerlink" title="数组属性"></a>数组属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># Array properties</span><br><span class="line">a = np.array([[11, 12, 13, 14, 15],</span><br><span class="line">              [16, 17, 18, 19, 20],</span><br><span class="line">              [21, 22, 23, 24, 25],</span><br><span class="line">              [26, 27, 28 ,29, 30],</span><br><span class="line">              [31, 32, 33, 34, 35]])</span><br><span class="line"></span><br><span class="line">print(type(a)) # &gt;&gt;&gt;&lt;class &apos;numpy.ndarray&apos;&gt;</span><br><span class="line">print(a.dtype) # &gt;&gt;&gt;int64</span><br><span class="line">print(a.size) # &gt;&gt;&gt;25</span><br><span class="line">print(a.shape) # &gt;&gt;&gt;(5, 5)</span><br><span class="line">print(a.itemsize) # &gt;&gt;&gt;8</span><br><span class="line">print(a.ndim) # &gt;&gt;&gt;2</span><br><span class="line">print(a.nbytes) # &gt;&gt;&gt;200</span><br></pre></td></tr></table></figure>
 
-<p>  select *<br>  from employees<br>  where lastName=’Smith’</p>
-</details>
-
-<p>4.查询姓氏为“Smith”或“Doe”的员工的所有数据。</p>
-<details>
-  <summary>点击展开...</summary>
-方法一：
-
-<p>  select *<br>  from employees<br>  where lastName=’Smith’ or lastName=’Doe’</p>
-<p>方法二：</p>
-<p>  select *<br>  from employees<br>  where lastName in(‘Smith’,’Doe’)</p>
-</details>
-
-<p>5.查询在部门14中工作的员工的所有数据。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  select *<br>  from employees<br>  where department=14</p>
-</details>
-
-<p>6.查询在部门37或部门77中工作的员工的所有数据。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  select *<br>  from employees<br>  where department in(37,77)</p>
-</details>
-
-<p>7.查询姓氏以“S”开头的员工的所有数据。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  select *<br>  from employees<br>  where LastName like ‘S%’</p>
-</details>
-
-<p>8.查询所有部门预算的总和。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  select sum(budget)<br>  from departments</p>
-</details>
-
-<p>9.查询每个部门的员工数量（您只需要显示部门代码和员工数量）。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  select department,count(*)<br>  from employees<br>  group by department</p>
-</details>
-
-<p>10.查询员工的所有数据，包括每个员工的部门数据。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  select *<br>  from employees e<br>  inner join departments d<br>  on e.department=d.code</p>
-</details>
-
-<p>11.查询每个员工的姓名和姓氏，以及员工部门的名称和预算。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  select  e.name,e.lastName,d.name,d.budget<br>  from employees e<br>  inner join departments d<br>  on e.department=d.code</p>
-</details>
-
-<p>12.查询为预算超过60,000美元的部门工作的员工的姓名和姓氏。</p>
-<details>
-  <summary>点击展开...</summary>
-方法一：
-
-<p>  select e.Name,e.lastName<br>  from employees e<br>  inner join departments d<br>  on e.department=d.code<br>  where d.budget&gt;=60000</p>
-<p> 方法二：</p>
-<p>  select Name,lastName<br>  from employees<br>  where department in(select code from departments where budget=60000)</p>
-</details>
-
-<p>13.查询预算大于所有部门平均预算的部门。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  select *<br>  from departments<br>  where budget =(select avg(budget) from departments)</p>
-</details>
-
-<p>14.查询拥有两名以上员工的部门的名称。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  select d.name<br>  from departments dinner join employees e<br>  on d.code= e.department<br>  group by d.name having count(*) &gt;2</p>
-</details>
-
-<p>15.查询为预算第二低的部门工作的员工的姓名和姓氏。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  select LastName<br>  from employees</p>
-</details>
-
-<p>16.添加一个名为“质量保证”的新部门，预算为40,000美元，部门代码为11.在该部门添加一名名为“Mary Moore”的员工，SSN为847-21-9811。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  insert into departments<br>  values(11,’质量保证’,40000)<br>  insert into employees<br>  values(847219811,’Mary’,’Moore’,11)</p>
-</details>
-
-<p>17.将所有部门的预算减少10％。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  update departments<br>  set budget=budget* 0.9</p>
-</details>
-
-<p>18.将所有员工从研究部门（代码77）重新分配给IT部门（代码14）。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  update employees<br>  set department=14<br>  where department =77</p>
-</details>
-
-<p>19.从表中删除IT部门的所有员工（代码14）。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  delete from employees<br>  where department=14</p>
-</details>
-
-<p>20.从表中删除所有在预算大于或等于60,000美元的部门工作的员工。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  delete from employees<br>  where department in(select code from departments where budget &gt;= 60000)</p>
-</details>
-
-<p>21.从表中删除所有员工。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  delete from employees</p>
+<ul>
+<li><p>正如你在上面的代码中看到的，NumPy数组实际上被称为ndarray。我不知道为什么他妈的它叫ndarray，如果有人知道请留言！我猜它代表n维数组。</p>
+</li>
+<li><p>数组的形状是它有多少行和列，上面的数组有5行和5列，所以它的形状是(5，5)。</p>
+</li>
+<li><p>itemsize属性是每个项占用的字节数。这个数组的数据类型是int 64，一个int 64中有64位，一个字节中有8位，除以64除以8，你就可以得到它占用了多少字节，在本例中是8。</p>
+</li>
+<li><p>ndim 属性是数组的维数。这个有2个。例如，向量只有1。</p>
+</li>
+<li><p>nbytes 属性是数组中的所有数据消耗掉的字节数。你应该注意到，这并不计算数组的开销，因此数组占用的实际空间将稍微大一点。</p>
+</li>
+</ul>
 
       
 
@@ -337,7 +229,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Sql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Numpy</a>
         		</li>
       		
 		</ul>
@@ -393,7 +285,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://ulquiola.github.io/2019/08/15/sql-practic/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://ulquiola.github.io/2019/10/25/Numpy%E5%9F%BA%E7%A1%80/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -407,18 +299,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/08/16/binaryTree/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          binaryTree
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/08/14/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2019/10/15/Git%E6%8B%89%E5%8F%96%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Git拉取远程分支</div>
       <i class="icon-circle-right"></i>
     </a>
   

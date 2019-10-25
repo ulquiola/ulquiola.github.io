@@ -6,17 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://ulquiola.github.io">
-  <title>sql-practic | ulquiola的博客</title>
+  <title>Tag: Numpy | ulquiola的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.查询所有员工的姓氏    点击展开...    select LastName  from employees   2.查询所有员工的姓氏，不重复。    点击展开...    select distinct lastName  from employees   3.查询姓氏为“Smith”的员工的所有数据。    点击展开...    select *  from employees  wh">
-<meta name="keywords" content="Sql">
-<meta property="og:type" content="article">
-<meta property="og:title" content="sql-practic">
-<meta property="og:url" content="http:&#x2F;&#x2F;ulquiola.github.io&#x2F;2019&#x2F;08&#x2F;15&#x2F;sql-practic&#x2F;index.html">
+  <meta name="description" content="C#、.netframework、.net core、Java、Python、算法、数据结构">
+<meta name="keywords" content="C#、.netframework、.net core、Java、Python、算法、数据结构">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ulquiola的博客">
+<meta property="og:url" content="http:&#x2F;&#x2F;ulquiola.github.io&#x2F;tags&#x2F;Numpy&#x2F;index.html">
 <meta property="og:site_name" content="ulquiola的博客">
-<meta property="og:description" content="1.查询所有员工的姓氏    点击展开...    select LastName  from employees   2.查询所有员工的姓氏，不重复。    点击展开...    select distinct lastName  from employees   3.查询姓氏为“Smith”的员工的所有数据。    点击展开...    select *  from employees  wh">
+<meta property="og:description" content="C#、.netframework、.net core、Java、Python、算法、数据结构">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2019-10-20T11:09:18.329Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="ulquiola的博客" type="application/atom+xml">
@@ -153,305 +152,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-sql-practic" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      sql-practic
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/10/25/Numpy%E5%9F%BA%E7%A1%80/" class="archive-article-date">
+  	<time datetime="2019-10-25T00:47:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-25</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/10/25/Numpy%E5%9F%BA%E7%A1%80/">Numpy基础</a>
     </h1>
   
 
-        
-        <a href="/2019/08/15/sql-practic/" class="archive-article-date">
-  	<time datetime="2019-08-15T04:34:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.查询所有员工的姓氏</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  select LastName<br>  from employees</p>
-</details>
-
-<p>2.查询所有员工的姓氏，不重复。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  select distinct lastName<br>  from employees</p>
-</details>
-
-<p>3.查询姓氏为“Smith”的员工的所有数据。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  select *<br>  from employees<br>  where lastName=’Smith’</p>
-</details>
-
-<p>4.查询姓氏为“Smith”或“Doe”的员工的所有数据。</p>
-<details>
-  <summary>点击展开...</summary>
-方法一：
-
-<p>  select *<br>  from employees<br>  where lastName=’Smith’ or lastName=’Doe’</p>
-<p>方法二：</p>
-<p>  select *<br>  from employees<br>  where lastName in(‘Smith’,’Doe’)</p>
-</details>
-
-<p>5.查询在部门14中工作的员工的所有数据。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  select *<br>  from employees<br>  where department=14</p>
-</details>
-
-<p>6.查询在部门37或部门77中工作的员工的所有数据。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  select *<br>  from employees<br>  where department in(37,77)</p>
-</details>
-
-<p>7.查询姓氏以“S”开头的员工的所有数据。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  select *<br>  from employees<br>  where LastName like ‘S%’</p>
-</details>
-
-<p>8.查询所有部门预算的总和。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  select sum(budget)<br>  from departments</p>
-</details>
-
-<p>9.查询每个部门的员工数量（您只需要显示部门代码和员工数量）。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  select department,count(*)<br>  from employees<br>  group by department</p>
-</details>
-
-<p>10.查询员工的所有数据，包括每个员工的部门数据。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  select *<br>  from employees e<br>  inner join departments d<br>  on e.department=d.code</p>
-</details>
-
-<p>11.查询每个员工的姓名和姓氏，以及员工部门的名称和预算。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  select  e.name,e.lastName,d.name,d.budget<br>  from employees e<br>  inner join departments d<br>  on e.department=d.code</p>
-</details>
-
-<p>12.查询为预算超过60,000美元的部门工作的员工的姓名和姓氏。</p>
-<details>
-  <summary>点击展开...</summary>
-方法一：
-
-<p>  select e.Name,e.lastName<br>  from employees e<br>  inner join departments d<br>  on e.department=d.code<br>  where d.budget&gt;=60000</p>
-<p> 方法二：</p>
-<p>  select Name,lastName<br>  from employees<br>  where department in(select code from departments where budget=60000)</p>
-</details>
-
-<p>13.查询预算大于所有部门平均预算的部门。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  select *<br>  from departments<br>  where budget =(select avg(budget) from departments)</p>
-</details>
-
-<p>14.查询拥有两名以上员工的部门的名称。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  select d.name<br>  from departments dinner join employees e<br>  on d.code= e.department<br>  group by d.name having count(*) &gt;2</p>
-</details>
-
-<p>15.查询为预算第二低的部门工作的员工的姓名和姓氏。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  select LastName<br>  from employees</p>
-</details>
-
-<p>16.添加一个名为“质量保证”的新部门，预算为40,000美元，部门代码为11.在该部门添加一名名为“Mary Moore”的员工，SSN为847-21-9811。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  insert into departments<br>  values(11,’质量保证’,40000)<br>  insert into employees<br>  values(847219811,’Mary’,’Moore’,11)</p>
-</details>
-
-<p>17.将所有部门的预算减少10％。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  update departments<br>  set budget=budget* 0.9</p>
-</details>
-
-<p>18.将所有员工从研究部门（代码77）重新分配给IT部门（代码14）。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  update employees<br>  set department=14<br>  where department =77</p>
-</details>
-
-<p>19.从表中删除IT部门的所有员工（代码14）。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  delete from employees<br>  where department=14</p>
-</details>
-
-<p>20.从表中删除所有在预算大于或等于60,000美元的部门工作的员工。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  delete from employees<br>  where department in(select code from departments where budget &gt;= 60000)</p>
-</details>
-
-<p>21.从表中删除所有员工。</p>
-<details>
-  <summary>点击展开...</summary>
-
-<p>  delete from employees</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Sql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Numpy</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://ulquiola.github.io/2019/08/15/sql-practic/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/08/16/binaryTree/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          binaryTree
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/08/14/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -474,9 +228,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
