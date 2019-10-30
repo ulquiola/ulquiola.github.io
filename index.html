@@ -146,6 +146,140 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-install-hadoop" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/30/install-hadoop/">hadoop 安装与配置</a>
+    </h1>
+  
+
+        
+        <a href="/2019/10/30/install-hadoop/" class="archive-article-date">
+  	<time datetime="2019-10-30T11:17:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="创建hadoop用户"><a href="#创建hadoop用户" class="headerlink" title="创建hadoop用户"></a>创建hadoop用户</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">su</span><br><span class="line">useradd -m hadoop -s /bin/bash</span><br></pre></td></tr></table></figure>
+
+<p>修改密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd hadoop</span><br></pre></td></tr></table></figure>
+
+<p>为hadoop添加管理员权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">visudo</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2019/10/30/install-hadoop/1.png" alt></p>
+<h2 id="安装ssh、配置ssh无密码登录"><a href="#安装ssh、配置ssh无密码登录" class="headerlink" title="安装ssh、配置ssh无密码登录"></a>安装ssh、配置ssh无密码登录</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install openssh-clients</span><br><span class="line">sudo yum install openssh-server</span><br></pre></td></tr></table></figure>
+
+<p>无密码登录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd ~/.ssh/                     # 若没有该目录，请先执行一次ssh localhost</span><br><span class="line">ssh-keygen -t rsa              # 会有提示，都按回车就可以</span><br><span class="line">cat id_rsa.pub &gt;&gt; authorized_keys  # 加入授权</span><br><span class="line">chmod 600 ./authorized_keys    # 修改文件权限</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装Java环境"><a href="#安装Java环境" class="headerlink" title="安装Java环境"></a>安装Java环境</h2><ul>
+<li>由于CentOS7 自带Java1.8.0-openjdk,所以配置环境变量即可</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2019/10/30/install-hadoop/2.png" alt></p>
+<p>在文件添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk</span><br></pre></td></tr></table></figure>
+
+<p>让环境变量生效</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装hadoop2"><a href="#安装hadoop2" class="headerlink" title="安装hadoop2"></a>安装hadoop2</h2><p>下载hadoop</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://mirror.bit.edu.cn/apache/hadoop/common/hadoop-2.9.2/hadoop-2.9.2.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>解压到/usr/local/</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -zxf hadoop-2.9.2.tar.gz -C /usr/local/</span><br></pre></td></tr></table></figure>
+
+<p>改名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mv ./hadoop-2.9.2/ hadoop</span><br></pre></td></tr></table></figure>
+
+<p>授予权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R hadoop:hadoop ./hadoop</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装Hbase"><a href="#安装Hbase" class="headerlink" title="安装Hbase"></a>安装Hbase</h2><p>下载hbase</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://mirrors.tuna.tsinghua.edu.cn/apache/hbase/hbase-1.3.6/hbase-1.3.6-bin.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>解压至安装目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -zxf ./hbase-1.3.6-bin.tar.gz -C /usr/local</span><br></pre></td></tr></table></figure>
+
+<p>改名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mv /usr/local/hbase-1.3.6/usr/local/hbase</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>之后启动可能会显示 JAVA_HOME not set</li>
+</ul>
+<p>所以执行如下配置</p>
+<p>找到本机JAVA_HOME</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $JAVA_HOME</span><br></pre></td></tr></table></figure>
+
+<p>显示</p>
+<p><img src="/2019/10/30/install-hadoop/3.png" alt></p>
+<p>修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi /usr/local/hbase/conf/hbase-env.sh</span><br></pre></td></tr></table></figure>
+
+<p>修改为如图即可</p>
+<p><img src="/2019/10/30/install-hadoop/4.png" alt></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CentOS7</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/10/30/install-hadoop/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Java-basic" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1357,109 +1491,6 @@
 
 
   
-    <article id="post-Python的特殊方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/23/Python%E7%9A%84%E7%89%B9%E6%AE%8A%E6%96%B9%E6%B3%95/">Python的特殊方法</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/23/Python%E7%9A%84%E7%89%B9%E6%AE%8A%E6%96%B9%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2019-09-23T04:53:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.初始化对象</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__init__()</span><br></pre></td></tr></table></figure>
-
-<p>2.函数repr(obj)的返回值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__repr__():</span><br></pre></td></tr></table></figure>
-
-<p>3.函数str(obj)的返回值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__str__():</span><br></pre></td></tr></table></figure>
-<p>4.调用obj()的返回值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__call__():</span><br></pre></td></tr></table></figure>
-
-<p>5.对象的迭代器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__iter__():</span><br></pre></td></tr></table></figure>
-
-<p>6.对象的加法运算</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__add__()：</span><br></pre></td></tr></table></figure>
-
-<p>7.对象的减法运算</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__sub__():</span><br></pre></td></tr></table></figure>
-
-<p>8.对象的左乘运算(obj*x)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__mul__():</span><br></pre></td></tr></table></figure>
-
-<p>9.对象的右乘运算(x*obj)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__rmul__():</span><br></pre></td></tr></table></figure>
-
-<p>10.对象的类型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__class__():</span><br></pre></td></tr></table></figure>
-
-<p>11.对象的名字字符串</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__name__():</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Python 基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/23/Python%E7%9A%84%E7%89%B9%E6%AE%8A%E6%96%B9%E6%B3%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1574,11 +1605,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">LeetCode刷题之旅</a>
+                <a href="javascript:void(0)" class="js-tag color2">Git 操作</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Git 操作</a>
+                <a href="javascript:void(0)" class="js-tag color3">LeetCode刷题之旅</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1599,6 +1630,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Sql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">CentOS7</a>
               </li>
              
               <li class="article-tag-list-item">
