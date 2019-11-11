@@ -146,35 +146,40 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Abstract-Virtual-Override" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-ubuntu-server-install-jupyter" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/06/Abstract-Virtual-Override/">区分Abstract、Virtual和Override</a>
+      <a class="article-title" href="/2019/11/11/ubuntu-server-install-jupyter/">服务器安装Anaconda配置jupyter允许远程访问</a>
     </h1>
   
 
         
-        <a href="/2019/11/06/Abstract-Virtual-Override/" class="archive-article-date">
-  	<time datetime="2019-11-06T08:41:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-06</time>
+        <a href="/2019/11/11/ubuntu-server-install-jupyter/" class="archive-article-date">
+  	<time datetime="2019-11-11T07:11:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><ul>
-<li>abstract 修饰符指示所修饰的内容缺少实现或未实现。</li>
-<li>abstract 修饰符可用于类、方法、属性、索引器和事件。</li>
-<li>在类声明中使用abstract修饰符以指示某个类只能是其他类的基类。</li>
-<li>标记为抽象或包含在抽象类中的成员必须通过从抽象类派生的类来实现。</li>
-</ul>
-<h3 id="抽象类特性"><a href="#抽象类特性" class="headerlink" title="抽象类特性"></a>抽象类特性</h3><p>1.抽象类不能实例化<br>2.抽象类可以包含抽象方法和抽象访问器<br>3.不能用sealed修饰符修饰抽象类，因为这两个修饰符的含义是相反的。采用sealed修饰符的类无法继承，而abstract要求对类继承。<br>4.从抽象类派生的非抽象类必须包括继承的所有抽象方法和抽象访问器的实际实现。<br>5.在方法或属性声明中使用 abstract 修饰符以指示方法或属性不包含实现。</p>
-<h2 id="抽象方法特性"><a href="#抽象方法特性" class="headerlink" title="抽象方法特性"></a>抽象方法特性</h2><p>1.抽象方法是隐式的虚方法。<br>2.只允许在抽象类中使用抽象方法声明。<br>3.抽象方法不提供实际的实现，没有方法体。方法声明只是以一个分号结束，并且在签名后没有大括号 ({ })。</p>
+        <h2 id="下载和安装Anaconda"><a href="#下载和安装Anaconda" class="headerlink" title="下载和安装Anaconda"></a>下载和安装Anaconda</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-5.2.0-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
+<h3 id="赋予权限并执行"><a href="#赋予权限并执行" class="headerlink" title="赋予权限并执行"></a>赋予权限并执行</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$chmod +x Anaconda3-5.2.0-Linux-x86_64.sh</span><br><span class="line">$./Anaconda3-5.2.0-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
 
+<h2 id="生成配置文件"><a href="#生成配置文件" class="headerlink" title="生成配置文件"></a>生成配置文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --generate-config</span><br></pre></td></tr></table></figure>
+<h2 id="生成密码sha1值"><a href="#生成密码sha1值" class="headerlink" title="生成密码sha1值"></a>生成密码sha1值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$python3</span><br><span class="line"></span><br><span class="line">from notebook.auth import passwd</span><br><span class="line">passwd()</span><br><span class="line">Enter password:</span><br><span class="line">Verify password:</span><br><span class="line"></span><br><span class="line">&apos;sha1:ce23d945972f:34769685a7ccd3d08c84a18c63968a41f1140274&apos;</span><br></pre></td></tr></table></figure>
+
+<h2 id="将hash值放入配置文件"><a href="#将hash值放入配置文件" class="headerlink" title="将hash值放入配置文件"></a>将hash值放入配置文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$vi ~/.jupyter/jupyter_notebook_config.py</span><br><span class="line"></span><br><span class="line">c.NotebookApp.ip=&apos;*&apos;</span><br><span class="line">c.NotebookApp.password = u&apos;上面的hash值&apos;</span><br><span class="line">c.NotebookApp.open_browser = False</span><br><span class="line">c.NotebookApp.port =8888</span><br></pre></td></tr></table></figure>
+<h2 id="用screen启动jupyter-notebook"><a href="#用screen启动jupyter-notebook" class="headerlink" title="用screen启动jupyter notebook"></a>用screen启动jupyter notebook</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 新建一个 screen 窗口，若报错则可能需先安装 screen</span><br><span class="line">screen -S jupyter</span><br><span class="line"></span><br><span class="line"># 启动 jupyter notebook 服务</span><br><span class="line">jupyter notebook</span><br></pre></td></tr></table></figure>
+<ul>
+<li>screen命令<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">screen -S 会话名称        //创建会话</span><br><span class="line">screen -R 会话名称或编号        //进入会话 detached变成attached</span><br><span class="line">screen -ls                       //会话列表</span><br><span class="line">ctrl+a+d                         //离开，但后台还开着</span><br><span class="line">ctrl+c                             //返回</span><br><span class="line">screen -s 绘画名称 -X quit   //杀掉会话</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="修改阿里云安全组策略-把入方向的端口8888开放-完成！"><a href="#修改阿里云安全组策略-把入方向的端口8888开放-完成！" class="headerlink" title="修改阿里云安全组策略 把入方向的端口8888开放,完成！"></a>修改阿里云安全组策略 把入方向的端口8888开放,完成！</h2>
       
 
       
@@ -187,7 +192,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">C#基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Ubuntu 18.04</a>
         		</li>
       		
 		</ul>
@@ -197,7 +202,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/06/Abstract-Virtual-Override/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/11/11/ubuntu-server-install-jupyter/">展开全文 >></a>
         </p>
       
 
@@ -1671,15 +1676,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">C#基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">LeetCode刷题之旅</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Git 操作</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1687,11 +1684,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Numpy</a>
+                <a href="javascript:void(0)" class="js-tag color5">Python 基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">Git 操作</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Numpy</a>
               </li>
              
               <li class="article-tag-list-item">
