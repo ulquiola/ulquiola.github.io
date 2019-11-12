@@ -146,6 +146,151 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-pandas数据分析常用方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/">pandas数据分析常用方法</a>
+    </h1>
+  
+
+        
+        <a href="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2019-11-12T05:10:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
+<li>下载数据文件  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget http://labfile.oss.aliyuncs.com/courses/906/los_census.csv  </span><br><span class="line">wget http://labfile.oss.aliyuncs.com/courses/906/los_census.txt</span><br></pre></td></tr></table></figure></li>
+<li>jupyter环境</li>
+</ul>
+<h2 id="1-数据的读取"><a href="#1-数据的读取" class="headerlink" title="1. 数据的读取"></a>1. 数据的读取</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">data = pd.read_csv(&apos;los_census.csv&apos;)</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/1.png" alt>  </p>
+<ul>
+<li><p>选择第几行作为列索引名称  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = pd.read_csv(&apos;los_census.csv&apos;,header =1)</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/2.png" alt> </p>
+</li>
+<li><p>自定义列索引名称</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = pd.read_csv(&apos;los_census.csv&apos;,names=[&apos;A&apos;,&apos;B&apos;,&quot;C&quot;,&apos;D&apos;,&apos;E&apos;, &apos;F&apos;, &apos;G&apos;])</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/3.png" alt> </p>
+</li>
+</ul>
+<h2 id="2-数据的存储"><a href="#2-数据的存储" class="headerlink" title="2. 数据的存储"></a>2. 数据的存储</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = pd.read_csv(&apos;los_census.csv&apos;)</span><br><span class="line">data.to_json(&apos;1.json&apos;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-head-amp-tail"><a href="#3-head-amp-tail" class="headerlink" title="3.head &amp; tail"></a>3.head &amp; tail</h2><p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/4.png" alt></p>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/5.png" alt></p>
+<h2 id="4-统计方法"><a href="#4-统计方法" class="headerlink" title="4.统计方法"></a>4.统计方法</h2><ul>
+<li>describe() 相当于对数据集进行概览，会输出该数据集的计数、最大值、最小值等  </li>
+</ul>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/6.png" alt></p>
+<ul>
+<li>idxmin() 和 idxmax() 会计算最小、最大值对应的索引标签。</li>
+</ul>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/7.png" alt></p>
+<ul>
+<li>count() 用于统计非空数据的数量。</li>
+</ul>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/8.png" alt></p>
+<ul>
+<li>value_counts() 仅仅针对 Series，它会计算每一个值对应的数量统计。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">s = pd.Series(np.random.randint(0, 9, size=100)) # 生成一个 Series，并在 0-9 之间生成 100 个随机值。</span><br><span class="line">s.value_counts()</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/9.png" alt></p>
+<h2 id="5-计算方法"><a href="#5-计算方法" class="headerlink" title="5.计算方法"></a>5.计算方法</h2><ul>
+<li>sum() 用于计算数值数据的总和  </li>
+</ul>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/10.png" alt></p>
+<ul>
+<li>mean() 用于计算数值数据的平均值。  </li>
+</ul>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/11.png" alt></p>
+<ul>
+<li>median() 用于计算数值数据的算术中值。  </li>
+</ul>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/12.png" alt></p>
+<h2 id="6-标签对齐"><a href="#6-标签对齐" class="headerlink" title="6.标签对齐"></a>6.标签对齐</h2><ul>
+<li><p>索引标签是 Pandas 中非常重要的特性，有些时候，由于数据的缺失等各种因素导致标签错位的现象，或者想匹配新的标签。于是 Pandas 提供了索引标签对齐的方法 reindex()。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = pd.Series(data=[1, 2, 3, 4, 5], index=[&apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;, &apos;e&apos;])</span><br><span class="line">s</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/13.png" alt></p>
+</li>
+<li><p>reindex() 主要有三个作用：</p>
+<p>  1.重新排序现有数据以匹配新的一组标签。<br>  2.在没有标签对应数据的位置插入缺失值（NaN）标记。<br>  3.特殊情形下，使用逻辑填充缺少标签的数据（与时间序列数据高度相关）。</p>
+</li>
+</ul>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/14.png" alt></p>
+<h2 id="7-排序"><a href="#7-排序" class="headerlink" title="7.排序"></a>7.排序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(data=&#123;&apos;one&apos;: [1, 2, 3], &apos;two&apos;: [4, 5, 6], &apos;three&apos;: [7, 8, 9], &apos;four&apos;: [10, 11, 12]&#125;, index=[&apos;a&apos;, &apos;c&apos;, &apos;b&apos;])</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/15.png" alt></p>
+<ul>
+<li>按索引排序</li>
+</ul>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/16.png" alt></p>
+<ul>
+<li>添加参数，进行倒序排列</li>
+</ul>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/17.png" alt></p>
+<ul>
+<li><p>按数值排序,其方法为Series.sort_values()或者是DataFrame.sort_values()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(data=&#123;&apos;one&apos;: [1, 2, 3, 7], &apos;two&apos;: [4, 5, 6, 9], &apos;three&apos;: [7, 8, 9, 2], &apos;four&apos;: [10, 11, 12, 5]&#125;, index=[&apos;a&apos;, &apos;c&apos;, &apos;b&apos;,&apos;d&apos;])</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/18.png" alt></p>
+</li>
+<li><p>第三列按照从小到大排序：</p>
+</li>
+</ul>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/19.png" alt></p>
+<ul>
+<li>也可以同时按照两列：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[[&apos;one&apos;, &apos;two&apos;, &apos;three&apos;, &apos;four&apos;]].sort_values(by=[&apos;one&apos;,&apos;two&apos;])</span><br></pre></td></tr></table></figure>
+<img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/20.png" alt></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-ubuntu-server-install-jupyter" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1482,86 +1627,6 @@
 
 
   
-    <article id="post-BFS-and-DFS" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/23/BFS-and-DFS/">广度优先搜索和深度优先搜索</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/23/BFS-and-DFS/" class="archive-article-date">
-  	<time datetime="2019-09-23T13:15:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="广度优先搜索和深度优先搜索"><a href="#广度优先搜索和深度优先搜索" class="headerlink" title="广度优先搜索和深度优先搜索"></a>广度优先搜索和深度优先搜索</h1><h2 id="图"><a href="#图" class="headerlink" title="图"></a>图</h2><p><img src="/2019/09/23/BFS-and-DFS/graph.png" alt="示例图"></p>
-<h2 id="广度优先搜索-BFS"><a href="#广度优先搜索-BFS" class="headerlink" title="广度优先搜索 BFS"></a>广度优先搜索 BFS</h2><p>选择一起点开始，这里选择A节点，A的邻接点有B、C，接着是D、E,最后到F，所以这个图的BFS 为 A B C D E F 。<br>注意：其中 B 与 C 的位置可以互换，但 D 与 E不行。<br>BFS相当于二叉树的层次遍历，如下图所示<br><img src="/2019/09/23/BFS-and-DFS/binary.png" alt="二叉树"></p>
-<h3 id="下面是BFS的实现代码-Python3实现-："><a href="#下面是BFS的实现代码-Python3实现-：" class="headerlink" title="下面是BFS的实现代码(Python3实现)："></a>下面是BFS的实现代码(Python3实现)：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#使用字典来保存每个节点的邻接点</span><br><span class="line">graph=&#123;</span><br><span class="line">    &apos;A&apos;:[&apos;B&apos;,&apos;C&apos;],</span><br><span class="line">    &apos;B&apos;:[&apos;A&apos;,&apos;C&apos;,&apos;D&apos;],</span><br><span class="line">    &apos;C&apos;:[&apos;A&apos;,&apos;B&apos;,&apos;D&apos;,&apos;E&apos;],</span><br><span class="line">    &apos;D&apos;:[&apos;B&apos;,&apos;C&apos;,&apos;E&apos;,&apos;F&apos;],</span><br><span class="line">    &apos;E&apos;:[&apos;C&apos;,&apos;D&apos;],</span><br><span class="line">    &apos;F&apos;:[&apos;D&apos;]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def BFS(graph,start_node):</span><br><span class="line">    queue=[] #创建一个队列</span><br><span class="line">    queue.append(start_node) #把开始选择的节点加入队列</span><br><span class="line">    seen=set() #创建一个集合，由于集合元素不重复，所以用它来查看是否走过节点</span><br><span class="line">    seen.add(start_node) #把开始节点加入seen</span><br><span class="line">    while len(queue)&gt;0:</span><br><span class="line">        vertx=queue.pop(0)#顶点，出队列</span><br><span class="line">        node=graph[vertx]#邻接点</span><br><span class="line">        for i in node: #遍历当前邻接点</span><br><span class="line">            if i not in seen: #是否走过</span><br><span class="line">                seen.add(i) #加入seen</span><br><span class="line">                queue.append(i) #加入队列</span><br><span class="line">        print(vertx) #打印节点</span><br></pre></td></tr></table></figure>
-
-<h2 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h2><p>首先选择开始节点，然后一直走，走到尽头，然后往回走一步，判断邻接点是否走过，如果所有节点都走过就结束<br>如图所示<br><img src="/2019/09/23/BFS-and-DFS/dfs.png" alt="DFB"></p>
-<p>代码实现()</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def DFS(graph,start_node):</span><br><span class="line">    stack=[]</span><br><span class="line">    stack.append(start_node)</span><br><span class="line">    seen =set()</span><br><span class="line">    seen.add(start_node)</span><br><span class="line">    while len(stack) &gt;0:</span><br><span class="line">        vertx=stack.pop()</span><br><span class="line">        node =graph[vertx]</span><br><span class="line">        for i in node:</span><br><span class="line">            if i not in seen:</span><br><span class="line">                seen.add(i)</span><br><span class="line">                stack.append(i)</span><br><span class="line">        print(vertx)</span><br></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="BFS-使用队列来实现，层层遍历，从左到右"><a href="#BFS-使用队列来实现，层层遍历，从左到右" class="headerlink" title="BFS 使用队列来实现，层层遍历，从左到右"></a>BFS 使用队列来实现，层层遍历，从左到右</h3><h3 id="DFS-使用栈来实现，从头走到尾"><a href="#DFS-使用栈来实现，从头走到尾" class="headerlink" title="DFS 使用栈来实现，从头走到尾"></a>DFS 使用栈来实现，从头走到尾</h3>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/23/BFS-and-DFS/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1680,15 +1745,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Git 操作</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1696,15 +1757,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Ubuntu 18.04</a>
+                <a href="javascript:void(0)" class="js-tag color4">Sql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Sql</a>
+                <a href="javascript:void(0)" class="js-tag color3">Ubuntu 18.04</a>
               </li>
              
               <li class="article-tag-list-item">

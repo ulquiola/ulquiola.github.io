@@ -6,20 +6,39 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://ulquiola.github.io">
-  <title>Java 基础 | ulquiola的博客</title>
+  <title>pandas数据分析常用方法 | ulquiola的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="构造方法有两种类型的构造函数：1.默认构造函数(无参数构造函数) 2.参数化构造函数  Java默认构造函数(无参数构造函数)没有参数的构造函数称为默认构造函数。默认构造函数的语法如下： 1&amp;lt;class_name&amp;gt;()&amp;#123;&amp;#125;  Java默认构造函数的示例：在这个例子中，在Bike类中创建了无参数(no-arg)构造函数。它将在对象创建时被调用。 123456789cl">
-<meta name="keywords" content="Java基础">
+  <meta name="description" content="准备工作 下载数据文件  12wget http:&#x2F;&#x2F;labfile.oss.aliyuncs.com&#x2F;courses&#x2F;906&#x2F;los_census.csv  wget http:&#x2F;&#x2F;labfile.oss.aliyuncs.com&#x2F;courses&#x2F;906&#x2F;los_census.txt jupyter环境  1. 数据的读取123import pandas as pddata = pd.read_">
+<meta name="keywords" content="C#、.netframework、.net core、Java、Python、算法、数据结构">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java 基础">
-<meta property="og:url" content="http:&#x2F;&#x2F;ulquiola.github.io&#x2F;2019&#x2F;10&#x2F;29&#x2F;Java-basic&#x2F;index.html">
+<meta property="og:title" content="pandas数据分析常用方法">
+<meta property="og:url" content="http:&#x2F;&#x2F;ulquiola.github.io&#x2F;2019&#x2F;11&#x2F;12&#x2F;pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95&#x2F;index.html">
 <meta property="og:site_name" content="ulquiola的博客">
-<meta property="og:description" content="构造方法有两种类型的构造函数：1.默认构造函数(无参数构造函数) 2.参数化构造函数  Java默认构造函数(无参数构造函数)没有参数的构造函数称为默认构造函数。默认构造函数的语法如下： 1&amp;lt;class_name&amp;gt;()&amp;#123;&amp;#125;  Java默认构造函数的示例：在这个例子中，在Bike类中创建了无参数(no-arg)构造函数。它将在对象创建时被调用。 123456789cl">
+<meta property="og:description" content="准备工作 下载数据文件  12wget http:&#x2F;&#x2F;labfile.oss.aliyuncs.com&#x2F;courses&#x2F;906&#x2F;los_census.csv  wget http:&#x2F;&#x2F;labfile.oss.aliyuncs.com&#x2F;courses&#x2F;906&#x2F;los_census.txt jupyter环境  1. 数据的读取123import pandas as pddata = pd.read_">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:image" content="http:&#x2F;&#x2F;ulquiola.github.io&#x2F;2019&#x2F;10&#x2F;29&#x2F;Java-basic&#x2F;%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0.png">
-<meta property="og:updated_time" content="2019-10-29T02:49:53.166Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;ulquiola.github.io&#x2F;2019&#x2F;11&#x2F;12&#x2F;pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95&#x2F;1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;ulquiola.github.io&#x2F;2019&#x2F;11&#x2F;12&#x2F;pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95&#x2F;2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;ulquiola.github.io&#x2F;2019&#x2F;11&#x2F;12&#x2F;pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95&#x2F;3.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;ulquiola.github.io&#x2F;2019&#x2F;11&#x2F;12&#x2F;pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95&#x2F;4.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;ulquiola.github.io&#x2F;2019&#x2F;11&#x2F;12&#x2F;pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95&#x2F;5.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;ulquiola.github.io&#x2F;2019&#x2F;11&#x2F;12&#x2F;pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95&#x2F;6.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;ulquiola.github.io&#x2F;2019&#x2F;11&#x2F;12&#x2F;pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95&#x2F;7.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;ulquiola.github.io&#x2F;2019&#x2F;11&#x2F;12&#x2F;pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95&#x2F;8.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;ulquiola.github.io&#x2F;2019&#x2F;11&#x2F;12&#x2F;pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95&#x2F;9.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;ulquiola.github.io&#x2F;2019&#x2F;11&#x2F;12&#x2F;pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95&#x2F;10.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;ulquiola.github.io&#x2F;2019&#x2F;11&#x2F;12&#x2F;pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95&#x2F;11.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;ulquiola.github.io&#x2F;2019&#x2F;11&#x2F;12&#x2F;pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95&#x2F;12.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;ulquiola.github.io&#x2F;2019&#x2F;11&#x2F;12&#x2F;pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95&#x2F;13.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;ulquiola.github.io&#x2F;2019&#x2F;11&#x2F;12&#x2F;pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95&#x2F;14.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;ulquiola.github.io&#x2F;2019&#x2F;11&#x2F;12&#x2F;pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95&#x2F;15.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;ulquiola.github.io&#x2F;2019&#x2F;11&#x2F;12&#x2F;pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95&#x2F;16.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;ulquiola.github.io&#x2F;2019&#x2F;11&#x2F;12&#x2F;pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95&#x2F;17.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;ulquiola.github.io&#x2F;2019&#x2F;11&#x2F;12&#x2F;pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95&#x2F;18.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;ulquiola.github.io&#x2F;2019&#x2F;11&#x2F;12&#x2F;pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95&#x2F;19.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;ulquiola.github.io&#x2F;2019&#x2F;11&#x2F;12&#x2F;pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95&#x2F;20.png">
+<meta property="og:updated_time" content="2019-11-12T05:10:45.891Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;ulquiola.github.io&#x2F;2019&#x2F;10&#x2F;29&#x2F;Java-basic&#x2F;%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0.png">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;ulquiola.github.io&#x2F;2019&#x2F;11&#x2F;12&#x2F;pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95&#x2F;1.png">
   
     <link rel="alternative" href="/atom.xml" title="ulquiola的博客" type="application/atom+xml">
   
@@ -147,143 +166,110 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Java-basic" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-pandas数据分析常用方法" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Java 基础
+      pandas数据分析常用方法
     </h1>
   
 
         
-        <a href="/2019/10/29/Java-basic/" class="archive-article-date">
-  	<time datetime="2019-10-29T01:12:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-29</time>
+        <a href="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2019-11-12T05:10:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h2><h3 id="有两种类型的构造函数："><a href="#有两种类型的构造函数：" class="headerlink" title="有两种类型的构造函数："></a>有两种类型的构造函数：</h3><p>1.默认构造函数(无参数构造函数)</p>
-<p>2.参数化构造函数</p>
-<p><img src="/2019/10/29/Java-basic/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0.png" alt></p>
-<h2 id="Java默认构造函数-无参数构造函数"><a href="#Java默认构造函数-无参数构造函数" class="headerlink" title="Java默认构造函数(无参数构造函数)"></a>Java默认构造函数(无参数构造函数)</h2><p>没有参数的构造函数称为默认构造函数。默认构造函数的语法如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;class_name&gt;()&#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Java默认构造函数的示例："><a href="#Java默认构造函数的示例：" class="headerlink" title="Java默认构造函数的示例："></a>Java默认构造函数的示例：</h2><p>在这个例子中，在Bike类中创建了无参数(no-arg)构造函数。它将在对象创建时被调用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Bike1 &#123;</span><br><span class="line">    Bike1() &#123;</span><br><span class="line">        System.out.println(&quot;Bike is created&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String args[]) &#123;</span><br><span class="line">        Bike1 b = new Bike1();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上面的示例代码运行结果如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Bike is created</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>规则：如果类中没有构造函数，编译器会自动创建一个默认构造函数。</li>
+        <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
+<li>下载数据文件  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget http://labfile.oss.aliyuncs.com/courses/906/los_census.csv  </span><br><span class="line">wget http://labfile.oss.aliyuncs.com/courses/906/los_census.txt</span><br></pre></td></tr></table></figure></li>
+<li>jupyter环境</li>
 </ul>
-<h2 id="问题：-默认构造函数的目的是什么？"><a href="#问题：-默认构造函数的目的是什么？" class="headerlink" title="问题： 默认构造函数的目的是什么？"></a>问题： 默认构造函数的目的是什么？</h2><p>默认构造函数根据类型为对象提供默认值，如：0，null等。</p>
+<h2 id="1-数据的读取"><a href="#1-数据的读取" class="headerlink" title="1. 数据的读取"></a>1. 数据的读取</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">data = pd.read_csv(&apos;los_census.csv&apos;)</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/1.png" alt>  </p>
 <ul>
-<li>显示默认值的默认构造函数示例</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Student3 &#123;</span><br><span class="line">    int id;</span><br><span class="line">    String name;</span><br><span class="line"></span><br><span class="line">    void display() &#123;</span><br><span class="line">        System.out.println(id + &quot; &quot; + name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String args[]) &#123;</span><br><span class="line">        Student3 s1 = new Student3();</span><br><span class="line">        Student3 s2 = new Student3();</span><br><span class="line">        s1.display();</span><br><span class="line">        s2.display();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行上面代码，得到如下结果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0 null</span><br><span class="line">0 null</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>解释： 在上面的类中，代码中并没有创建任何构造函数，但编译器自动提供了一个默认构造函数。默认构造函数分别为字段：id 和 name 分别提供了0和null值。</p>
+<li><p>选择第几行作为列索引名称  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = pd.read_csv(&apos;los_census.csv&apos;,header =1)</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/2.png" alt> </p>
 </li>
-<li><p>每个类都有构造方法。如果没有显式地为类定义构造方法，Java编译器将会为该类提供一个默认构造方法。</p>
-</li>
-<li><p>在创建一个对象的时候，至少要调用一个构造方法。构造方法的名称必须与类同名，一个类可以有多个构造方法。</p>
+<li><p>自定义列索引名称</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = pd.read_csv(&apos;los_census.csv&apos;,names=[&apos;A&apos;,&apos;B&apos;,&quot;C&quot;,&apos;D&apos;,&apos;E&apos;, &apos;F&apos;, &apos;G&apos;])</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/3.png" alt> </p>
 </li>
 </ul>
-<h2 id="Java-构造函数与方法的区别"><a href="#Java-构造函数与方法的区别" class="headerlink" title="Java 构造函数与方法的区别"></a>Java 构造函数与方法的区别</h2><table>
-<thead>
-<tr>
-<th>构造函数</th>
-<th>方法</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>构造器用于初始化对象的状态（数据）</td>
-<td>方法用于暴露对象的行为</td>
-</tr>
-<tr>
-<td>构造函数不能有返回类型</td>
-<td>方法一般有返回类型</td>
-</tr>
-<tr>
-<td>构造函数隐式调用</td>
-<td>方法要显示调用</td>
-</tr>
-<tr>
-<td>如果没有指定任何构造函数 Java 编译器提供一个默认构造函数</td>
-<td>在任何情况下编译器都不会提供默认的方法调用</td>
-</tr>
-<tr>
-<td>构造函数名称必须有与类名称相同</td>
-<td>方法名称可以或不予类名称相同（随意）</td>
-</tr>
-</tbody></table>
-<h2 id="Java-静态变量"><a href="#Java-静态变量" class="headerlink" title="Java 静态变量"></a>Java 静态变量</h2><p>如果将一个变量声明为 static ，它就是所谓的静态变量了</p>
+<h2 id="2-数据的存储"><a href="#2-数据的存储" class="headerlink" title="2. 数据的存储"></a>2. 数据的存储</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = pd.read_csv(&apos;los_census.csv&apos;)</span><br><span class="line">data.to_json(&apos;1.json&apos;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-head-amp-tail"><a href="#3-head-amp-tail" class="headerlink" title="3.head &amp; tail"></a>3.head &amp; tail</h2><p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/4.png" alt></p>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/5.png" alt></p>
+<h2 id="4-统计方法"><a href="#4-统计方法" class="headerlink" title="4.统计方法"></a>4.统计方法</h2><ul>
+<li>describe() 相当于对数据集进行概览，会输出该数据集的计数、最大值、最小值等  </li>
+</ul>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/6.png" alt></p>
 <ul>
-<li><p>静态变量可以用于引用所有对象的公共属性（对于每个对象不是惟一的）</p>
-</li>
-<li><p>静态变量的优点： 它能使程序储存器高效（既节省内存）</p>
+<li>idxmin() 和 idxmax() 会计算最小、最大值对应的索引标签。</li>
+</ul>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/7.png" alt></p>
+<ul>
+<li>count() 用于统计非空数据的数量。</li>
+</ul>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/8.png" alt></p>
+<ul>
+<li>value_counts() 仅仅针对 Series，它会计算每一个值对应的数量统计。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">s = pd.Series(np.random.randint(0, 9, size=100)) # 生成一个 Series，并在 0-9 之间生成 100 个随机值。</span><br><span class="line">s.value_counts()</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
-<p>理解不使用静态变量的问题</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Student&#123;  </span><br><span class="line">     int rollno;  </span><br><span class="line">     String name;  </span><br><span class="line">     String college=&quot;ITS&quot;;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>假设在一所学校有500名学生，现在所有实例数据成员将在每次创建对象时获取内存。所有学生都有其唯一的注册ID：rollno和　name ，因此实例数据成员没有什么问题。college 指的是所有对象的共同属性。如果使它静态化(使用static关键字修饲)，这个字段将只获得内存一次。</p>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/9.png" alt></p>
+<h2 id="5-计算方法"><a href="#5-计算方法" class="headerlink" title="5.计算方法"></a>5.计算方法</h2><ul>
+<li>sum() 用于计算数值数据的总和  </li>
+</ul>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/10.png" alt></p>
 <ul>
-<li>Java静态属性被共享给所有对象。</li>
+<li>mean() 用于计算数值数据的平均值。  </li>
 </ul>
-<h3 id="静态变量的实例"><a href="#静态变量的实例" class="headerlink" title="静态变量的实例"></a>静态变量的实例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Student &#123;</span><br><span class="line">    int rollno;</span><br><span class="line">    String name;</span><br><span class="line">    static String college = &quot;ITS&quot;;</span><br><span class="line"></span><br><span class="line">    Student(int r, String n) &#123;</span><br><span class="line">        rollno = r;</span><br><span class="line">        name = n;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void display() &#123;</span><br><span class="line">        System.out.println(rollno + &quot; &quot; + name + &quot; &quot; + college);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String args[]) &#123;</span><br><span class="line">        Student s1 = new Student(111, &quot;Karan&quot;);</span><br><span class="line">        Student s2 = new Student(222, &quot;Aryan&quot;);</span><br><span class="line"></span><br><span class="line">        s1.display();</span><br><span class="line">        s2.display();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上面代码执行结果如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">111 Karan ITS</span><br><span class="line">222 Aryan ITS</span><br></pre></td></tr></table></figure>
-
-<h3 id="不使用静态变量的计数器程序"><a href="#不使用静态变量的计数器程序" class="headerlink" title="不使用静态变量的计数器程序"></a>不使用静态变量的计数器程序</h3><ul>
-<li>在这个例子中，我们创建了一个名为count的实例变量用来统计创建对象的数目，它在构造函数中执行递增。 由于实例变量在创建对象时要获取内存，每个对象都将具有实例变量的副本，如果它被递增了，它也不会反映到其他对象中。所以每个对象在count变量中的值还是1。</li>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/11.png" alt></p>
+<ul>
+<li>median() 用于计算数值数据的算术中值。  </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Counter &#123;</span><br><span class="line">    int count = 0;// will get memory when instance is created</span><br><span class="line"></span><br><span class="line">    Counter() &#123;</span><br><span class="line">        count++;</span><br><span class="line">        System.out.println(count);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String args[]) &#123;</span><br><span class="line"></span><br><span class="line">        Counter c1 = new Counter();</span><br><span class="line">        Counter c2 = new Counter();</span><br><span class="line">        Counter c3 = new Counter();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>执行结果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">1</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
-
-<h3 id="计数器静态变量的程序"><a href="#计数器静态变量的程序" class="headerlink" title="计数器静态变量的程序"></a>计数器静态变量的程序</h3><ul>
-<li>计数器静态变量的程序如上所述，静态变量将只获取一次内存，如果任何对象更改静态变量的值，它将保留其值，所有实例均可访问同一变量值。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Counter2 &#123;</span><br><span class="line">    static int count = 0;// will get memory only once and retain its value</span><br><span class="line"></span><br><span class="line">    Counter2() &#123;</span><br><span class="line">        count++;</span><br><span class="line">        System.out.println(count);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String args[]) &#123;</span><br><span class="line"></span><br><span class="line">        Counter2 c1 = new Counter2();</span><br><span class="line">        Counter2 c2 = new Counter2();</span><br><span class="line">        Counter2 c3 = new Counter2();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上面代码执行结果如下 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
-
-<h2 id="为什么java-main方法是静态的？"><a href="#为什么java-main方法是静态的？" class="headerlink" title="为什么java main方法是静态的？"></a>为什么java main方法是静态的？</h2><ul>
-<li>这是因为对象不需要调用静态方法，如果它是非静态方法，jvm首先要创建对象，然后调用main()方法，这将导致额外的内存分配的问题。</li>
-</ul>
-<h2 id="Java-静态方法"><a href="#Java-静态方法" class="headerlink" title="Java 静态方法"></a>Java 静态方法</h2><ul>
-<li><p>如果在任何方法上应用static关键字，此方法称为静态方法。</p>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/12.png" alt></p>
+<h2 id="6-标签对齐"><a href="#6-标签对齐" class="headerlink" title="6.标签对齐"></a>6.标签对齐</h2><ul>
+<li><p>索引标签是 Pandas 中非常重要的特性，有些时候，由于数据的缺失等各种因素导致标签错位的现象，或者想匹配新的标签。于是 Pandas 提供了索引标签对齐的方法 reindex()。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = pd.Series(data=[1, 2, 3, 4, 5], index=[&apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;, &apos;e&apos;])</span><br><span class="line">s</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/13.png" alt></p>
 </li>
-<li><p>静态方法属于类，而不属于类的对象。可以直接调用静态方法，而无需创建类的实例。静态方法可以访问静态数据成员，并可以更改静态数据成员的值</p>
+<li><p>reindex() 主要有三个作用：</p>
+<p>  1.重新排序现有数据以匹配新的一组标签。<br>  2.在没有标签对应数据的位置插入缺失值（NaN）标记。<br>  3.特殊情形下，使用逻辑填充缺少标签的数据（与时间序列数据高度相关）。</p>
 </li>
 </ul>
-<h3 id="静态方法的限制"><a href="#静态方法的限制" class="headerlink" title="静态方法的限制"></a>静态方法的限制</h3><p>静态方法有两个主要限制。它们分别是：</p>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/14.png" alt></p>
+<h2 id="7-排序"><a href="#7-排序" class="headerlink" title="7.排序"></a>7.排序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(data=&#123;&apos;one&apos;: [1, 2, 3], &apos;two&apos;: [4, 5, 6], &apos;three&apos;: [7, 8, 9], &apos;four&apos;: [10, 11, 12]&#125;, index=[&apos;a&apos;, &apos;c&apos;, &apos;b&apos;])</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/15.png" alt></p>
 <ul>
-<li>静态方法不能直接使用非静态数据成员或调用非静态方法。</li>
-<li>this和super两个关键字不能在静态上下文中使用。</li>
+<li>按索引排序</li>
 </ul>
-<h2 id="Java-静态块"><a href="#Java-静态块" class="headerlink" title="Java 静态块"></a>Java 静态块</h2><p>Java中的静态块主要有两个作用：</p>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/16.png" alt></p>
 <ul>
-<li>用于初始化静态数据成员。</li>
-<li>它在类加载时在main方法之前执行。</li>
+<li>添加参数，进行倒序排列</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class A2 &#123;</span><br><span class="line">    static &#123;</span><br><span class="line">        System.out.println(&quot;static block is invoked&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String args[]) &#123;</span><br><span class="line">        System.out.println(&quot;Hello main&quot;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/17.png" alt></p>
+<ul>
+<li><p>按数值排序,其方法为Series.sort_values()或者是DataFrame.sort_values()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(data=&#123;&apos;one&apos;: [1, 2, 3, 7], &apos;two&apos;: [4, 5, 6, 9], &apos;three&apos;: [7, 8, 9, 2], &apos;four&apos;: [10, 11, 12, 5]&#125;, index=[&apos;a&apos;, &apos;c&apos;, &apos;b&apos;,&apos;d&apos;])</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/18.png" alt></p>
+</li>
+<li><p>第三列按照从小到大排序：</p>
+</li>
+</ul>
+<p><img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/19.png" alt></p>
+<ul>
+<li>也可以同时按照两列：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[[&apos;one&apos;, &apos;two&apos;, &apos;three&apos;, &apos;four&apos;]].sort_values(by=[&apos;one&apos;,&apos;two&apos;])</span><br></pre></td></tr></table></figure>
+<img src="/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/20.png" alt></li>
+</ul>
 
-<p>执行结果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">static block is invoked</span><br><span class="line">Hello main</span><br></pre></td></tr></table></figure>
       
 
       
@@ -291,17 +277,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -352,7 +327,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://ulquiola.github.io/2019/10/29/Java-basic/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://ulquiola.github.io/2019/11/12/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -366,18 +341,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/10/30/hadoop%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          hadoop分布式集群搭建
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/10/25/Numpy%E5%9F%BA%E7%A1%80/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Numpy基础</div>
+    <a href="/2019/11/11/ubuntu-server-install-jupyter/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">服务器安装Anaconda配置jupyter允许远程访问</div>
       <i class="icon-circle-right"></i>
     </a>
   
