@@ -146,6 +146,91 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-1-两数之和" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/24/1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/">1.两数之和</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/24/1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" class="archive-article-date">
+  	<time datetime="2019-09-24T18:02:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。</p>
+<p>你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。</p>
+<p>示例:</p>
+<p>给定 nums = [2, 7, 11, 15], target = 9</p>
+<p>因为 nums[0] + nums[1] = 2 + 7 = 9<br>所以返回 [0, 1]</p>
+<h2 id="解题方法"><a href="#解题方法" class="headerlink" title="解题方法"></a>解题方法</h2><p>1.暴力破解法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for i in range(len(nums)-1):           # 外循环，从第一个到倒数第二个</span><br><span class="line">       for j in range(i+1,len(nums)):  # 内循环，从i的后一个到最后一个</span><br><span class="line">           if nums[i]+nums[j]==target: # 如果相加等于target</span><br><span class="line">               return[i,j]             # 就返回它们的索引</span><br></pre></td></tr></table></figure>
+<p>不过这种方法相当慢，下图是它的效率<br><img src="/2019/09/24/1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/1.png" alt></p>
+<p>2.字典法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">d,res=&#123;&#125;,[]</span><br><span class="line">for i in range(len(nums)):</span><br><span class="line">    wana=target-nums[i]</span><br><span class="line">    if wana in d:</span><br><span class="line">        res.append(d[wana])</span><br><span class="line">        res.append(i)</span><br><span class="line">    else:</span><br><span class="line">        d[nums[i]]=i</span><br><span class="line">return res</span><br></pre></td></tr></table></figure>
+<h3 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h3><p><img src="/2019/09/24/1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/dict.png" alt><br>下图是字典法的效率：</p>
+<p><img src="/2019/09/24/1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/2.png" alt></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">LeetCode刷题之旅</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/24/1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-BFS-and-DFS" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -159,7 +244,7 @@
 
         
         <a href="/2019/09/23/BFS-and-DFS/" class="archive-article-date">
-  	<time datetime="2019-09-23T13:15:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-23</time>
+  	<time datetime="2019-09-24T04:15:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-23</time>
 </a>
         
       </header>
@@ -239,7 +324,7 @@
 
         
         <a href="/2019/09/23/%E9%9D%A2%E8%AF%95%E8%87%AA%E6%88%91%E4%BB%8B%E7%BB%8D/" class="archive-article-date">
-  	<time datetime="2019-09-23T11:07:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-23</time>
+  	<time datetime="2019-09-24T02:07:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-23</time>
 </a>
         
       </header>
@@ -342,7 +427,7 @@
 
         
         <a href="/2019/09/23/Python%E7%9A%84%E7%89%B9%E6%AE%8A%E6%96%B9%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2019-09-23T04:53:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-23</time>
+  	<time datetime="2019-09-23T19:53:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-23</time>
 </a>
         
       </header>
@@ -445,7 +530,7 @@
 
         
         <a href="/2019/09/23/ubuntu-install-sogoupinyin/" class="archive-article-date">
-  	<time datetime="2019-09-23T04:49:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-23</time>
+  	<time datetime="2019-09-23T19:49:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-23</time>
 </a>
         
       </header>
@@ -523,7 +608,7 @@
 
         
         <a href="/2019/08/19/ubuntu-install-shadowsocks/" class="archive-article-date">
-  	<time datetime="2019-08-19T09:39:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-19</time>
+  	<time datetime="2019-08-20T00:39:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-19</time>
 </a>
         
       </header>
@@ -614,7 +699,7 @@
 
         
         <a href="/2019/08/16/binaryTree/" class="archive-article-date">
-  	<time datetime="2019-08-16T06:05:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
+  	<time datetime="2019-08-16T21:05:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
 </a>
         
       </header>
@@ -689,7 +774,7 @@
 
         
         <a href="/2019/08/15/sql-practic/" class="archive-article-date">
-  	<time datetime="2019-08-15T04:34:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-15</time>
+  	<time datetime="2019-08-15T19:34:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-15</time>
 </a>
         
       </header>
@@ -913,7 +998,7 @@
 
         
         <a href="/2019/08/14/hello-world/" class="archive-article-date">
-  	<time datetime="2019-08-14T10:34:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-14</time>
+  	<time datetime="2019-08-15T01:34:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-14</time>
 </a>
         
       </header>
@@ -1004,7 +1089,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 ulquiola
+    		&copy; 2020 ulquiola
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -1124,11 +1209,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Sql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Sql</a>
+                <a href="javascript:void(0)" class="js-tag color3">CentOS7</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1137,10 +1226,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">自我介绍</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">CentOS7</a>
               </li>
             
             <div class="clearfix"></div>
